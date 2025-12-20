@@ -4,10 +4,8 @@ const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js');
 const authRoutes = require('./routes/auth');
 const rewardsRoutes = require('./routes/rewards');
-
 const app = express();
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
-
 // Test connection
 async function testConnection() {
   try {
@@ -19,17 +17,24 @@ async function testConnection() {
   }
 }
 testConnection();
-
 app.use(cors());
 app.use(express.json());
-
 app.use((req, res, next) => {
   req.supabase = supabase;
   next();
 });
-
 app.use('/api/auth', authRoutes);
 app.use('/api/rewards', rewardsRoutes);
+
+// Root route
+app.get('/', (req, res) => {
+  res.send('Welcome to FlowvaHub Rewards API. Server is running');
+});
+
+// Catch-all route for 404 (place at the end)
+app.use((req, res) => {
+  res.status(404).send('Not Found. The requested endpoint does not exist.');
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
