@@ -24,7 +24,7 @@
 
 ## Live URL
 
-Deploy and share: [Live Demo](https://flowvahub-reward-system-o1gd.vercel.app/login)
+Deploy and share: [Live Demo](https://flowvahub-reward-system-o1gd.vercel.app)
 
 ## GitHub
 
