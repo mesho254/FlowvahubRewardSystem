@@ -13,7 +13,7 @@ const RewardsCatalog = () => {
     useEffect(() => {
         const fetchRewards = async () => {
             try {
-                const res = await axios.get('/api/rewards/rewards');
+                const res = await axios.get('https://flowvahub-reward-system.vercel.app/api/rewards/rewards');
                 setRewards(res.data);
             } catch (err) {
                 setError('Failed to load rewards');
@@ -26,7 +26,7 @@ const RewardsCatalog = () => {
 
     const handleRedeem = async (id) => {
         try {
-            await axios.post('/api/rewards/redeem', { rewardId: id });
+            await axios.post('https://flowvahub-reward-system.vercel.app/api/rewards/redeem', { rewardId: id });
 
             // Refresh points instantly
             await fetchUserDetails();

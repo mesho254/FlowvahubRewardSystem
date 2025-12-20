@@ -12,7 +12,7 @@ const Missions = () => {
 
     const fetchMissions = async () => {
         try {
-            const res = await axios.get('/api/rewards/missions');
+            const res = await axios.get('https://flowvahub-reward-system.vercel.app/api/rewards/missions');
             setMissions(res.data);
         } catch (err) {
             setError('Failed to load missions');
@@ -27,7 +27,7 @@ const Missions = () => {
 
     const handleClaim = async (id) => {
         try {
-            await axios.post('/api/rewards/claim-mission', { missionId: id });
+            await axios.post('https://flowvahub-reward-system.vercel.app/api/rewards/claim-mission', { missionId: id });
 
             // Optimistic UI: mark as completed immediately
             setMissions(missions.map(m => m.id === id ? { ...m, completed: true } : m));

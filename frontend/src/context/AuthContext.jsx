@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
 
     const fetchUserDetails = async () => {
         try {
-            const res = await axios.get('/api/rewards/profile');
+            const res = await axios.get('https://flowvahub-reward-system.vercel.app/api/rewards/profile');
             setUserDetails(res.data);
         } catch (err) {
             console.error('Failed to fetch user details');
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const res = await axios.post('/api/auth/login', { email, password });
+            const res = await axios.post('https://flowvahub-reward-system.vercel.app/api/auth/login', { email, password });
             localStorage.setItem('token', res.data.session.access_token);
             axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.session.access_token}`;
             await fetchUserDetails();
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
     const signup = async (email, password, redirectTo) => {
         try {
-            await axios.post('/api/auth/signup', { email, password, redirectTo });
+            await axios.post('https://flowvahub-reward-system.vercel.app/api/auth/signup', { email, password, redirectTo });
             return true;
         } catch (err) {
             console.error(err);
@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post('/api/auth/logout');
+            await axios.post('https://flowvahub-reward-system.vercel.app/api/auth/logout');
         } catch (err) {
             console.error(err);
         } finally {
@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
 
     const refreshSession = async (access_token, refresh_token) => {
         try {
-            const res = await axios.post('/api/auth/refresh', { refresh_token });
+            const res = await axios.post('https://flowvahub-reward-system.vercel.app/api/auth/refresh', { refresh_token });
             localStorage.setItem('token', res.data.session.access_token);
             axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.session.access_token}`;
             await fetchUserDetails();

@@ -20,7 +20,7 @@ const Settings = () => {
         setError(null);
         setSuccess(null);
         try {
-            await axios.post('/api/rewards/profile', { display_name: displayName });
+            await axios.post('https://flowvahub-reward-system.vercel.app/api/rewards/profile', { display_name: displayName });
             await fetchUserDetails();
             setSuccess('Profile updated successfully');
         } catch (err) {
@@ -40,7 +40,7 @@ const Settings = () => {
         setError(null);
         setSuccess(null);
         try {
-            await axios.post('/api/auth/change-password', { currentPassword, newPassword });
+            await axios.post('https://flowvahub-reward-system.vercel.app/api/auth/change-password', { currentPassword, newPassword });
             setSuccess('Password changed successfully');
             setCurrentPassword('');
             setNewPassword('');
