@@ -1,17 +1,19 @@
 # FlowvaHub Rewards Page Recreation
 
 ## Setup
+
 1. Set up Supabase as above.
 2. Backend: cd backend, npm install, add .env, npm start
 3. Frontend: cd frontend, npm install, npm run dev
 
 ## Routes
+
 - /login: Login page
 - /signup: Signup page
 - /: Rewards page (protected)
 
-
 ## Assumptions
+
 - Used Express as backend proxy for Supabase to match request.
 - Design based on purple theme, modern UI with MUI and inline CSS.
 - Interactive elements: Claim/Redeem buttons update state.
@@ -21,9 +23,9 @@
 - Redirects on auth actions.
 
 ## Live URL
-Deploy and share: [your-deploy-url]
+
+Deploy and share: [Live Demo](https://flowvahub-reward-system-o1gd.vercel.app/login)
 
 ## GitHub
-[your-repo-url]
 
-
+[GitHub Repository](https://github.com/mesho254/FlowvahubRewardSystem.git)
